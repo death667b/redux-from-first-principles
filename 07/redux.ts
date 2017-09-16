@@ -17,7 +17,7 @@ export function createStore(reducer, state = {}) {
 }
 
 export function reducer(prevValue, currAction, value = 0) {
-    let newState = 0;
+    let newState;
 
     switch(currAction) {
         case '@@INIT':
