@@ -6,6 +6,7 @@ export function createStore(reducer, state = {}) {
         dispatch: (currentAction: string, value?) => {
             let newState = reducer(state, currentAction, value);
             if (newState != state)  {
+                state = newState;
                 if (subscribers) {
                     subscribers.forEach(fn => fn(newState))
                 }
@@ -16,7 +17,7 @@ export function createStore(reducer, state = {}) {
 }
 
 export function reducer(prevValue, currAction, value = 0) {
-    let newState;
+    let newState = 0;
 
     switch(currAction) {
         case '@@INIT':
