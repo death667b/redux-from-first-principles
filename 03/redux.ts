@@ -1,7 +1,7 @@
-export function createStore(state = {}) {
+export function createStore(reducer, state = {}) {
     return {
         getState: () => state,
-        dispatch: () => {},
+        dispatch: currentAction => state = reducer(state, currentAction)
     }
 }
 
